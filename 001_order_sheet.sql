@@ -8,7 +8,7 @@ CREATE TABLE goods (
   goods_id              INTEGER NOT NULL,
   goods_name            VARCHAR(100),
   price                 INTEGER,
-  tax-included_price    INTEGER,
+  tax_included_price    INTEGER,
   goods_class           INTEGER,
   goods_category_id     INTEGER NOT NULL,
   PRIMARY KEY (goods_id),
