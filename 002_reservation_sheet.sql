@@ -1,7 +1,7 @@
 CREATE TABLE publishers (
   publisher_id          INTEGER NOT NULL,
   publisher_name        VARCHAR(100),
-  PRIMARY KEY (publishers_id)
+  PRIMARY KEY (publisher_id)
 );
 
 CREATE TABLE books (
@@ -12,7 +12,9 @@ CREATE TABLE books (
   publication_year      DATE,
   price                 INTEGER,
   PRIMARY KEY (book_id),
-  FOREIGN KEY (publisher_id) REFERENCES publishers (publisher_id)
+  FOREIGN KEY (publisher_id)
+    REFERENCES publishers (publisher_id)
+    ON UPDATE RESTRICT
 );
 
 CREATE TABLE information_sources (
@@ -24,6 +26,7 @@ CREATE TABLE information_sources (
   others                VARCHAR(100),
   PRIMARY KEY (information_source_id),
   FOREIGN KEY (book_id) REFERENCES books (book_id)
+    ON UPDATE RESTRICT
 );
 
 CREATE TABLE users (
@@ -52,7 +55,9 @@ CREATE TABLE receive_places (
   midorigo_station_id   INTEGER,
   PRIMARY KEY (receive_place_id),
   FOREIGN KEY (library_id)          REFERENCES libraries (library_id)
+    ON UPDATE RESTRICT,
   FOREIGN KEY (midorigo_station_id) REFERENCES midorigo_stations (midorigo_station_id)
+    ON UPDATE RESTRICT
 );
 
 CREATE TABLE reservations (
@@ -65,7 +70,10 @@ CREATE TABLE reservations (
   receive_place_id      INTEGER NOT NULL,
   book_id               INTEGER NOT NULL,
   PRIMARY KEY (reservation_id),
-  FOREIGN KEY (user_id)           REFERENCES users (user_id),
-  FOREIGN KEY (receive_place_id)  REFERENCES receive_places (receive_place_id),
-  FOREIGN KEY (book_id)           REFERENCES books (book_id),
+  FOREIGN KEY (user_id)           REFERENCES users (user_id)
+    ON UPDATE RESTRICT,
+  FOREIGN KEY (receive_place_id)  REFERENCES receive_places (receive_place_id)
+    ON UPDATE RESTRICT,
+  FOREIGN KEY (book_id)           REFERENCES books (book_id)
+    ON UPDATE RESTRICT
 );
