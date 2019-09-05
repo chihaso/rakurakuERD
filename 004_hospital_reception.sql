@@ -11,7 +11,6 @@ CREATE TABLE receptions (
   patient_id INTEGER NOT NULL,
   reception_timestamp TIMESTAMPTZ,
   terminal_number INTEGER,
-  birthday DATE,
   accounting_number INTEGER,
   PRIMARY KEY (reception_id),
   FOREIGN KEY (patient_id) REFERENCES patients (patient_id)
