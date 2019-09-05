@@ -19,7 +19,7 @@ CREATE TABLE receptions (
 
 CREATE TABLE departments (
   department_id INTEGER NOT NULL,
-  departmentt_name VARCHAR(100),
+  department_name VARCHAR(100),
   PRIMARY KEY (department_id)
 );
 
